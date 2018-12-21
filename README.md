@@ -1,5 +1,7 @@
 # kikobeats <sup>![version badge](https://version-badge.egoist.sh/npm/kikobeats)</sup>
 
+![](/demo.png)
+
 > A personal card for Kiko Beats (@kikobeats)
 
 ## License
