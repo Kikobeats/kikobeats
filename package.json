@@ -2,7 +2,7 @@
   "name": "kikobeats",
   "description": "Senior Product Engineer at IBM",
   "homepage": "https://kikobeats.com",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "index.js",
   "bin": {
     "kikobeats": "bin/index.js"
@@ -104,5 +104,8 @@
     "scripts": {
       "prechangelog": "git-authors-cli"
     }
-  }
+  },
+  "contributors": [
+    "ImgBotApp <ImgBotHelp@gmail.com>"
+  ]
 }
