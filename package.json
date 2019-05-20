@@ -2,7 +2,7 @@
   "name": "kikobeats",
   "description": "Senior Product Engineer at IBM",
   "homepage": "https://kikobeats.com",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "bin": {
     "kikobeats": "bin/index.js"
