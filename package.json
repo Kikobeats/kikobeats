@@ -28,12 +28,12 @@
   ],
   "dependencies": {
     "boxen": "~4.2.0",
-    "chalk": "~2.4.1"
+    "chalk": "~3.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "ava": "~1.0.1",
+    "ava": "~3.0.0",
     "ci-publish": "latest",
     "conventional-github-releaser": "latest",
     "coveralls": "latest",
