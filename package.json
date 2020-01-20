@@ -27,13 +27,13 @@
     "personal"
   ],
   "dependencies": {
-    "boxen": "~2.1.0",
+    "boxen": "~4.2.0",
     "chalk": "~3.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "ava": "~3.0.0",
+    "ava": "latest",
     "ci-publish": "latest",
     "conventional-github-releaser": "latest",
     "coveralls": "latest",
