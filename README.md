@@ -1,4 +1,6 @@
-Hello, I'm Kiko and I'm a programmer and I'm pushing code to GitHub since 2012.
+# Hi, I'm Kiko, writting code since 2012.
+
+🇪🇸🇪🇺🇺🇸 | **Building web infra & open source** | **Worked for Vercel, IBM & more.**
 
 ## Running
 
