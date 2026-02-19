@@ -1,7 +1,7 @@
-I'm Kiko 🇪🇸🇪🇺🇺🇸
-Writting code since 2012.
-Building web infra & open source
-Worked for Vercel, IBM & more.
+I'm Kiko 🇪🇸🇪🇺🇺🇸<br>
+Writting code since 2012.<br>
+Building web infra & open source.<br>
+Worked for Vercel, IBM & more.<br>
 
 ## Running
 
