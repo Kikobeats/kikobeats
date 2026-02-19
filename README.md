@@ -3,13 +3,12 @@ Hello, I'm Kiko and I'm a programmer and I'm pushing code to GitHub since 2012.
 ## Running
 
 - [microlink.io](https://microlink.io/) – Enter URL, receive data. Turn any link into screenshots, PDFs, previews, or structured data.
-  - Documentation revamped
-  - 16K pixels full-page screenshots
-  - LLVM-friendly output
+  - [Adblock now handles cookie banners](https://x.com/microlinkhq/status/2023771250363937153)
+  - [Antibot detection at scale](https://x.com/microlinkhq/status/2013262432915894377)
+  - [Documentation as markdown](https://x.com/microlinkhq/status/2023771250363937153)
+  - [Sharing debugger tool](https://x.com/microlinkhq/status/2018708510947557606)
 - [unavatar.io](https://unavatar.io) – The ultimate avatar service that offers everything you need to easily retrieve user avatars.
-  - OpenStreetMap Support
-  - Spotify support
-  - more stuff
+  - [Generally available now](https://x.com/microlinkhq/status/2008987588947013898)
 
 ## Project
 
