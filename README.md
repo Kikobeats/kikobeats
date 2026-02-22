@@ -11,6 +11,7 @@ Building web infra & open source.<br>
   - [Documentation as markdown](https://x.com/microlinkhq/status/2023771250363937153)
   - [Sharing debugger tool](https://x.com/microlinkhq/status/2018708510947557606)
 - [unavatar.io](https://unavatar.io) – The ultimate avatar service that offers everything you need to easily retrieve user avatars.
+  - [Apple Music support](https://x.com/microlinkhq/status/2025503734873072102)
   - [OpenStreetMap support](https://x.com/microlinkhq/status/2024888803421274441)
   - [Generally available now](https://x.com/microlinkhq/status/2008987588947013898)
 
