@@ -66,6 +66,7 @@ Building web infra & open source.<br>
 - [js-mythbusters](https://github.com/Kikobeats/js-mythbusters) — JavaScript performance tips and myths.
 - [null-prototype-object](https://github.com/kikobeats/null-prototype-object) – Fastest way for creating null-prototype objects in JavaScript.
 - [process-stats](https://github.com/Kikobeats/process-stats) — Real-time Node.js process stats.
+- [stable-regex](https://github.com/Kikobeats/stable-regex) – Fast, deterministic regex checks for hot paths.
 - [superlock](https://github.com/Kikobeats/lock) — Simple mutex/semaphore implementation.
 - [time-span](https://github.com/Kikobeats/time-span) – A zero dependencies high resolution timing function.
 - [untracked](https://github.com/Kikobeats/untracked) — Ignore unnecessary common files.
