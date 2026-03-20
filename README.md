@@ -21,7 +21,7 @@ Building web infra & open source.<br>
 
 - [automate-release ⭐](https://github.com/Kikobeats/automate-release) — Automate software release workflows.
 - [git-authors-cli ⭐](https://github.com/Kikobeats/git-authors-cli) — Print contributors and update package.json.
-- [chaste](https://github.com/Kikobeats/chaste) — Tiny type-casting library.
+- [optimo](https://optimo.microlink.io/) – effortless media optimizer for the web.
 - [free-email-domains](https://github.com/Kikobeats/free-email-domains) — Comprehensive list of free email providers.
 - [generator-git](https://github.com/Kikobeats/generator-git) — Configurable scaffolding for git-like projects.
 - [oembed-spec](https://github.com/microlinkhq/oembed-spec) — oEmbed specification parser.
