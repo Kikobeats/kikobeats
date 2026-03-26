@@ -51,6 +51,7 @@ Building web infra & open source.<br>
 - [cacheable-response](https://github.com/Kikobeats/cacheable-response) — HTTP cache middleware with invalidation support.
 - [http-body](https://github.com/Kikobeats/http-body) – Parse the stream body into text/json/buffer/urlencoded (437 bytes).
 - [http-compression](https://github.com/kikobeats/http-compression) – Adding compression (gzip/brotli) for your HTTP server in Node.js.
+- [is-antibot](https://github.com/microlinkhq/is-antibot) – Identify if a response is an antibot challenge from CloudFlare, Akamai, etc.
 - [mql](https://github.com/microlinkhq/mql) — Official HTTP client for Microlink API.
 - [router-http](https://github.com/Kikobeats/router-http) — Simple HTTP router compatible with Express.
 - [send-http](https://github.com/Kikobeats/send-http) – A straightforward way to send data for http.IncomingMessage.
