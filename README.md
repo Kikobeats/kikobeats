@@ -79,7 +79,7 @@ Building web infra & open source.<br>
 - [country-vat](https://github.com/Kikobeats/country-vat) — Country VAT rate lookup.
 - [hyperdiff](https://github.com/Kikobeats/hyperdiff) — Fast object diff utility.
 
-### URL manipulation
+### URL manipulation
 
 - [metascraper ⭐](https://github.com/microlinkhq/metascraper) — Extract unified metadata from websites (Open Graph, JSON-LD, Microdata, and more).
 - [css-urls](https://github.com/Kikobeats/css-urls) — Extract URLs from stylesheets.
