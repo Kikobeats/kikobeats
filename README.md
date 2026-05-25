@@ -60,11 +60,11 @@ Building web infra & open source.<br>
 
 ### Performance
 
+- [isolated-function ⭐](https://isolated-function.js.org/) — Run untrusted code in a Node.js V8 sandbox.
 - [async-memoize-one](https://github.com/microlinkhq/async-memoize-one) – It caches the last time a function was called with the same arguments.
 - [async-ratelimiter](https://github.com/microlinkhq/async-ratelimiter) — Simple async rate limiter.
 - [compress-brotli](https://github.com/Kikobeats/compress-brotli) — Node.js interface for Brotli compression.
 - [debug-logfmt](https://github.com/Kikobeats/debug-logfmt) – The debug module that uses logfmt format.
-- [isolated-function](https://github.com/Kikobeats/isolated-function) — Run untrusted code in a Node.js V8 sandbox.
 - [js-mythbusters](https://github.com/Kikobeats/js-mythbusters) — JavaScript performance tips and myths.
 - [null-prototype-object](https://github.com/kikobeats/null-prototype-object) – Fastest way for creating null-prototype objects in JavaScript.
 - [process-stats](https://github.com/Kikobeats/process-stats) — Real-time Node.js process stats.
