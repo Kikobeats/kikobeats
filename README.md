@@ -6,7 +6,7 @@ Building web infra & open source.<br>
 ## Running
 
 - [microlink.io](https://microlink.io/) — Enter URL, receive data. Turn any link into screenshots, PDFs, previews, or structured data.
-  - [Free development key, no card required](https://dashboard.microlink.io)
+  - [Free API key, 25 requests per day](https://microlink.io/pricing)
   - [Microlink skill for AI agents](https://microlink.io/ai)
   - [Browser functions API](https://microlink.io/function)
 - [unavatar.io](https://unavatar.io) — The ultimate avatar service that offers everything you need to easily retrieve user avatars.
