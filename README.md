@@ -10,7 +10,7 @@ Building web infra & open source.<br>
   - [Microlink skill for AI agents](https://microlink.io/ai)
   - [Browser functions API](https://microlink.io/function)
 - [unavatar.io](https://unavatar.io) — The ultimate avatar service that offers everything you need to easily retrieve user avatars.
-  - [+75 providers supported](https://unavatar.io/)
+  - [+99 providers supported](https://unavatar.io/)
   - [BIMI brand logos support](https://unavatar.io/bimi)
   - [Publishable keys support](https://unavatar.io/)
 
