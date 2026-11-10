@@ -9,7 +9,10 @@ export const PROFILE = {
     ['Sports', 'Basketball, Windsurfing, Crossfit']
   ],
   previously: 'Vercel, IBM Research, Audiense, Rakuten',
-  gaming: [['Playing', 'Counter Strike, Apex Legends, PUBG']],
+  gaming: [
+    ['Playing', 'Counter Strike, Apex Legends, PUBG'],
+    ['Favorite', 'FFVII, Dark Souls']
+  ],
   contact: [
     ['Website', 'kikobeats.com'],
     ['Email', 'josefrancisco.verdu@gmail.com'],

@@ -167,6 +167,7 @@ test('gaming is its own section before contact', () => {
   const heading = text.findIndex(line => line.startsWith('- Gaming '))
   assert.ok(heading > 0)
   assert.match(text[heading + 1], /^\. Playing: \.+ Counter Strike, Apex Legends, PUBG$/)
+  assert.match(text[heading + 2], /^\. Favorite: \.+ FFVII, Dark Souls$/)
   assert.ok(heading < text.findIndex(line => line.startsWith('- Contact ')))
 })
 
