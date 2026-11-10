@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'node:fs'
+import { writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { fetchGithubStats } from './github.mjs'
 import { buildInfoLines } from './profile.mjs'
@@ -16,11 +16,10 @@ if (!token) {
 
 const now = new Date()
 const [github, site] = await Promise.all([fetchGithubStats({ token, login: LOGIN, now }), fetchSiteNumbers()])
-const asciiLines = readFileSync(resolve('avatar.txt'), 'utf8').trimEnd().split('\n')
 const infoLines = buildInfoLines({ github, site }, now)
 
 for (const [name, theme] of Object.entries(THEMES)) {
-  writeFileSync(resolve(`${name}.svg`), renderSvg({ asciiLines, infoLines, theme }))
+  writeFileSync(resolve(`${name}.svg`), renderSvg({ infoLines, theme }))
 }
 
 console.log(JSON.stringify({ github, site }))

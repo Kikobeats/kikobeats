@@ -1,90 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1198" height="528" viewBox="0 0 1198 528">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="755" height="528" viewBox="0 0 755 528">
   <style>
     text { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 15px; white-space: pre; }
-    .ascii { font-size: 6.55px; }
-    .ascii, .text { fill: #24292f; }
+    .text { fill: #24292f; }
     .key { fill: #953800; }
     .value { fill: #0a3069; }
     .dots { fill: #c2cfde; }
   </style>
-  <rect width="1198" height="528" rx="12" fill="#f6f8fa" stroke="#d0d7de"/>
-  <text class="ascii" x="24" y="30.55">....................................................................................................</text>
-  <text class="ascii" x="24" y="39.27">....................................................................................................</text>
-  <text class="ascii" x="24" y="48">.............................................-+***+-:...............................................</text>
-  <text class="ascii" x="24" y="56.73">........................................-+#%%%%%%%%%%%##*+-.........................................</text>
-  <text class="ascii" x="24" y="65.45">......................................=###%%%%%%%%%%%%%%%%%##*=-:...................................</text>
-  <text class="ascii" x="24" y="74.18">.................................:=++*###***##%%%%%%%%%%%%%%%%%##*+.................................</text>
-  <text class="ascii" x="24" y="82.91">...............................:#%%%%%%%%%####*##%%%%%%%%%%%%%%%%%%##-..............................</text>
-  <text class="ascii" x="24" y="91.64">..............................+#%%%%%%%%%%%%###*##%%%%%%%%%%%%%%%%%%##*.............................</text>
-  <text class="ascii" x="24" y="100.36">............................:**%%%%%%%%%%%%%%%#######%%%%%%%%@%%%%%%%%%#+...........................</text>
-  <text class="ascii" x="24" y="109.09">...........................-+*###%%%%%%%%%%%%%%#####*##%%%%%%%%@%%%%%%%%*=:.....  ..................</text>
-  <text class="ascii" x="24" y="117.82">.................. .   ...-*#*#%#%%#%%%%%%%%%%%%##*****###%%%%%%%%%%%%%%%%%#+:.... . . .............</text>
-  <text class="ascii" x="24" y="126.55">................ ....    :***#*%%%%#%%#%%%%%%%%%#**++++***###%%%%%%%%%%%%%%##*=. ...................</text>
-  <text class="ascii" x="24" y="135.27">............... .       .=***####%%%%%%%####%%##**+====++++**##%%%%%%%%%%%%%%#*=.    ...............</text>
-  <text class="ascii" x="24" y="144">................ .     .-+***######%###########**++=======++++*##%%%%%%%%%%%#**=..      ..  ........</text>
-  <text class="ascii" x="24" y="152.73">........ ... ..        .-=++#*######%#####*###***++++==========+++*##%%%%%#**=.:.          .........</text>
-  <text class="ascii" x="24" y="161.45">..........  .          .-=+*+++#####%#####***+*++++++++++++=====++++*#####-.....            .. .....</text>
-  <text class="ascii" x="24" y="170.18"> ....  .               .:+=+*++*####%#%#*#*+++++++++++++++++++++++==+++**+:...                    ..</text>
-  <text class="ascii" x="24" y="178.91">.....                  .-===+=+++*#####*##*+=--==+++++++++++++++++===++==-:.</text>
-  <text class="ascii" x="24" y="187.64">                       .:-++++*++###%####*+=::::-=+++++++++++++==+==+====-..</text>
-  <text class="ascii" x="24" y="196.36">                       .-+++=++*##%*--+*#*+=--::--=++=+++++=============-:.</text>
-  <text class="ascii" x="24" y="205.09">                       .==++++****+*##-::-+====--==========++===========-:.</text>
-  <text class="ascii" x="24" y="213.82">                       .=++++**#*+++#**+++=:-=+-=++**####++=++==========-:.</text>
-  <text class="ascii" x="24" y="222.55">                       .=+*==+*++===++=-:::-=+*-:-=****#%%%%#*++========-:.</text>
-  <text class="ascii" x="24" y="231.27">                       .-++==+*++====-....:-=++****#%@%%%%%%%%##*+++++++==-..</text>
-  <text class="ascii" x="24" y="240">                       ..=++++**+====:....:-==++++*+%%+#####+++*#*++#%%%#****+=:..</text>
-  <text class="ascii" x="24" y="248.73">                        .:===++++===-......:===++++*=+*####**+++-%*##%#*=..::==**.</text>
-  <text class="ascii" x="24" y="257.45">                         ..-====+==-:.....::-====+++:++****++*+-=++***#-..  .:++..</text>
-  <text class="ascii" x="24" y="266.18">                          .::--:.-=:......::==+++=+=-==++++++=-=+==+*+-.   ..:..</text>
-  <text class="ascii" x="24" y="274.91">                           ...............:-=+++++=====++++==-======:-..  ..:.</text>
-  <text class="ascii" x="24" y="283.64">                           ..............::-=+++=====+++=+==+======:.:. ..:..</text>
-  <text class="ascii" x="24" y="292.36">                           ............:.::-=+=======++***=========:. .....</text>
-  <text class="ascii" x="24" y="301.09">                          ............::::::=+====++++++**=========.</text>
-  <text class="ascii" x="24" y="309.82">                        .............::::::-=-==+++++++++*##*+++===.</text>
-  <text class="ascii" x="24" y="318.55">           ....::-+*+==+-.....::.....:::::-=--=+++++******####*=+-..</text>
-  <text class="ascii" x="24" y="327.27">:-:-=+*+:::-=+=-:++##%#*......::-::...:::--====++++*##***+++**++:.</text>
-  <text class="ascii" x="24" y="336">%%%%*-:::...-+**=**%%%=-:.....:==+=-:.:::--===+++++++++***##*++:.</text>
-  <text class="ascii" x="24" y="344.73">%*:..-=++++++****###*+==-----==++++*+-:::::-==++++*********+=-..</text>
-  <text class="ascii" x="24" y="353.45">..::::+*#**#**#***##*++==--===++++++***#*=-:--=+++++++*****=-.</text>
-  <text class="ascii" x="24" y="362.18">.:....-=*####*######*++=====+++++++++***####***+++++++++++=:.</text>
-  <text class="ascii" x="24" y="370.91">:===-:..=**#########*+++++++++++++++++****######******++++=.</text>
-  <text class="ascii" x="24" y="379.64">*##***++*###########*++++++++++++++++++++*****###*#%###***=.</text>
-  <text class="ascii" x="24" y="388.36">####################*++++++++++++++++++++*******+=+####*+%#:...</text>
-  <text class="ascii" x="24" y="397.09">###################%#+++++++++++++++++++++*****+==######*%%+:++:.....</text>
-  <text class="ascii" x="24" y="405.82">####**#############%%#++++++++++++++++++++****+++#%%##*##%%#=.=#*++++:..</text>
-  <text class="ascii" x="24" y="414.55">##################%%%%%++++++++++++++++++++++++++%@%%#**#%%%#-:*#**+***+=:.</text>
-  <text class="ascii" x="24" y="423.27">*#################%@%%%%#+++++++++++++++++++++++*%%%%####%%%%#***+********=..</text>
-  <text class="ascii" x="24" y="432">#*################%%@%%%%%#+++++++++++++++++++++*%@%%%###%%@%%##***#*+*##**+.</text>
-  <text class="ascii" x="24" y="440.73">##################%%%%%%%%%%#++===+++++++++++++++%@%######%%%#%%#####**+++*+:</text>
-  <text class="ascii" x="24" y="449.45">###################%%%%%%%%%%%%+++++=++++==+=====%%%#######%%%########****#*=.</text>
-  <text class="ascii" x="24" y="458.18">-#########*########%%%%%%%%%%%%%%*+=============+%%%%########%###########*##=.</text>
-  <text class="ascii" x="24" y="466.91">.*####***#*#########%%%%%%%%%%%@@%%%*==========+#%%%%#######################+-.</text>
-  <text class="ascii" x="24" y="475.64">#++#-.:=******#######%%%%%%%%%%%%%@@@%%#+===++*#%%%%%#######%#####%#########*+-.</text>
-  <text class="ascii" x="24" y="484.36">#-..+#%*=:=**########%%%%%%%%%%%%@@@@@@@@@@%%%%%%%%%%#######################*+*-..</text>
-  <text class="ascii" x="24" y="493.09">%#=..=#%%%%+-*########%%%%%%%%%%%%%%@@@@@%%%%%%%%%%%%#######################**#+=:.</text>
-  <text class="ascii" x="24" y="501.82">#%%#=-##%%%@%==#######%%%%%%%%%%%%%%%@@@@@@@@%%%%%%%%%##%##############%%####*%##*=.</text>
-  <text x="467.02" y="39"><tspan class="text">kiko@beats </tspan><tspan class="text">─────────────────────────────────────────────────────────────────</tspan></text>
-  <text x="467.02" y="59"><tspan class="dots">. </tspan><tspan class="key">Uptime: </tspan><tspan class="dots">......................................</tspan><tspan class="value"> 34 years, 6 months, 12 days</tspan></text>
-  <text x="467.02" y="79"><tspan class="dots">. </tspan><tspan class="key">Host: </tspan><tspan class="dots">......................................................</tspan><tspan class="value"> Murcia, Spain</tspan></text>
-  <text x="467.02" y="99"><tspan class="dots">. </tspan><tspan class="key">Kernel: </tspan><tspan class="dots">..............................................</tspan><tspan class="value"> Founder @ Microlink</tspan></text>
-  <text x="467.02" y="119"><tspan class="dots">. </tspan><tspan class="key">Sports: </tspan><tspan class="dots">................................</tspan><tspan class="value"> Basketball, Windsurfing, Crossfit</tspan></text>
-  <text x="467.02" y="139"><tspan class="dots">.</tspan></text>
-  <text x="467.02" y="159"><tspan class="dots">. </tspan><tspan class="key">Work.Running: </tspan><tspan class="dots">....</tspan><tspan class="value"> microlink.io (136M reqs/mo), unavatar.io (185M reqs/mo)</tspan></text>
-  <text x="467.02" y="179"><tspan class="dots">. </tspan><tspan class="key">Work.Previously: </tspan><tspan class="dots">.................</tspan><tspan class="value"> Vercel, IBM Research, Audiense, Rakuten</tspan></text>
-  <text x="467.02" y="199"><tspan class="dots">.</tspan></text>
-  <text x="467.02" y="219"><tspan class="text">- Gaming </tspan><tspan class="text">───────────────────────────────────────────────────────────────────</tspan></text>
-  <text x="467.02" y="239"><tspan class="dots">. </tspan><tspan class="key">Playing: </tspan><tspan class="dots">..........................................................</tspan><tspan class="value"> Claude</tspan></text>
-  <text x="467.02" y="259"><tspan class="dots">. </tspan><tspan class="key">Played: </tspan><tspan class="dots">...............................</tspan><tspan class="value"> Counter Strike, Apex Legends, PUBG</tspan></text>
-  <text x="467.02" y="279"><tspan class="dots">. </tspan><tspan class="key">Favorite: </tspan><tspan class="dots">..............................................</tspan><tspan class="value"> FFVII, Dark Souls</tspan></text>
-  <text x="467.02" y="299"><tspan class="dots">.</tspan></text>
-  <text x="467.02" y="319"><tspan class="text">- Contact </tspan><tspan class="text">──────────────────────────────────────────────────────────────────</tspan></text>
-  <text x="467.02" y="339"><tspan class="dots">. </tspan><tspan class="key">Website: </tspan><tspan class="dots">...................................................</tspan><tspan class="value"> kikobeats.com</tspan></text>
-  <text x="467.02" y="359"><tspan class="dots">. </tspan><tspan class="key">Email: </tspan><tspan class="dots">.....................................</tspan><tspan class="value"> josefrancisco.verdu@gmail.com</tspan></text>
-  <text x="467.02" y="379"><tspan class="dots">. </tspan><tspan class="key">LinkedIn: </tspan><tspan class="dots">......................................................</tspan><tspan class="value"> kikobeats</tspan></text>
-  <text x="467.02" y="399"><tspan class="dots">. </tspan><tspan class="key">X: </tspan><tspan class="dots">............................................................</tspan><tspan class="value"> @kikobeats</tspan></text>
-  <text x="467.02" y="419"><tspan class="dots">.</tspan></text>
-  <text x="467.02" y="439"><tspan class="text">- Stats </tspan><tspan class="text">────────────────────────────────────────────────────────────────────</tspan></text>
-  <text x="467.02" y="459"><tspan class="dots">. </tspan><tspan class="key">Repos: </tspan><tspan class="dots">.............</tspan><tspan class="value"> 546 {Contributed: 68}</tspan><tspan class="text"> | </tspan><tspan class="key">Stars: </tspan><tspan class="dots">...............</tspan><tspan class="value"> 18,185</tspan></text>
-  <text x="467.02" y="479"><tspan class="dots">. </tspan><tspan class="key">Commits: </tspan><tspan class="dots">..........................</tspan><tspan class="value"> 64,844</tspan><tspan class="text"> | </tspan><tspan class="key">Followers: </tspan><tspan class="dots">............</tspan><tspan class="value"> 1,752</tspan></text>
-  <text x="467.02" y="499"><tspan class="dots">. </tspan><tspan class="key">npm: </tspan><tspan class="dots">...................................................</tspan><tspan class="value"> 133M downloads/mo</tspan></text>
+  <rect width="755" height="528" rx="12" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="24" y="39"><tspan class="text">kiko@beats </tspan><tspan class="text">─────────────────────────────────────────────────────────────────</tspan></text>
+  <text x="24" y="59"><tspan class="dots">. </tspan><tspan class="key">Uptime: </tspan><tspan class="dots">......................................</tspan><tspan class="value"> 34 years, 6 months, 12 days</tspan></text>
+  <text x="24" y="79"><tspan class="dots">. </tspan><tspan class="key">Host: </tspan><tspan class="dots">......................................................</tspan><tspan class="value"> Murcia, Spain</tspan></text>
+  <text x="24" y="99"><tspan class="dots">. </tspan><tspan class="key">Kernel: </tspan><tspan class="dots">..............................................</tspan><tspan class="value"> Founder @ Microlink</tspan></text>
+  <text x="24" y="119"><tspan class="dots">. </tspan><tspan class="key">Sports: </tspan><tspan class="dots">................................</tspan><tspan class="value"> Basketball, Windsurfing, Crossfit</tspan></text>
+  <text x="24" y="139"><tspan class="dots">.</tspan></text>
+  <text x="24" y="159"><tspan class="dots">. </tspan><tspan class="key">Work.Running: </tspan><tspan class="dots">....</tspan><tspan class="value"> microlink.io (136M reqs/mo), unavatar.io (185M reqs/mo)</tspan></text>
+  <text x="24" y="179"><tspan class="dots">. </tspan><tspan class="key">Work.Previously: </tspan><tspan class="dots">.................</tspan><tspan class="value"> Vercel, IBM Research, Audiense, Rakuten</tspan></text>
+  <text x="24" y="199"><tspan class="dots">.</tspan></text>
+  <text x="24" y="219"><tspan class="text">- Gaming </tspan><tspan class="text">───────────────────────────────────────────────────────────────────</tspan></text>
+  <text x="24" y="239"><tspan class="dots">. </tspan><tspan class="key">Playing: </tspan><tspan class="dots">..........................................................</tspan><tspan class="value"> Claude</tspan></text>
+  <text x="24" y="259"><tspan class="dots">. </tspan><tspan class="key">Played: </tspan><tspan class="dots">...............................</tspan><tspan class="value"> Counter Strike, Apex Legends, PUBG</tspan></text>
+  <text x="24" y="279"><tspan class="dots">. </tspan><tspan class="key">Favorite: </tspan><tspan class="dots">..............................................</tspan><tspan class="value"> FFVII, Dark Souls</tspan></text>
+  <text x="24" y="299"><tspan class="dots">.</tspan></text>
+  <text x="24" y="319"><tspan class="text">- Contact </tspan><tspan class="text">──────────────────────────────────────────────────────────────────</tspan></text>
+  <text x="24" y="339"><tspan class="dots">. </tspan><tspan class="key">Website: </tspan><tspan class="dots">...................................................</tspan><tspan class="value"> kikobeats.com</tspan></text>
+  <text x="24" y="359"><tspan class="dots">. </tspan><tspan class="key">Email: </tspan><tspan class="dots">.....................................</tspan><tspan class="value"> josefrancisco.verdu@gmail.com</tspan></text>
+  <text x="24" y="379"><tspan class="dots">. </tspan><tspan class="key">LinkedIn: </tspan><tspan class="dots">......................................................</tspan><tspan class="value"> kikobeats</tspan></text>
+  <text x="24" y="399"><tspan class="dots">. </tspan><tspan class="key">X: </tspan><tspan class="dots">............................................................</tspan><tspan class="value"> @kikobeats</tspan></text>
+  <text x="24" y="419"><tspan class="dots">.</tspan></text>
+  <text x="24" y="439"><tspan class="text">- Stats </tspan><tspan class="text">────────────────────────────────────────────────────────────────────</tspan></text>
+  <text x="24" y="459"><tspan class="dots">. </tspan><tspan class="key">Repos: </tspan><tspan class="dots">.............</tspan><tspan class="value"> 571 {Contributed: 89}</tspan><tspan class="text"> | </tspan><tspan class="key">Stars: </tspan><tspan class="dots">...............</tspan><tspan class="value"> 18,185</tspan></text>
+  <text x="24" y="479"><tspan class="dots">. </tspan><tspan class="key">Commits: </tspan><tspan class="dots">..........................</tspan><tspan class="value"> 64,844</tspan><tspan class="text"> | </tspan><tspan class="key">Followers: </tspan><tspan class="dots">............</tspan><tspan class="value"> 1,752</tspan></text>
+  <text x="24" y="499"><tspan class="dots">. </tspan><tspan class="key">npm: </tspan><tspan class="dots">...................................................</tspan><tspan class="value"> 133M downloads/mo</tspan></text>
 </svg>
