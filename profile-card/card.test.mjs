@@ -142,6 +142,11 @@ test('host is where Kiko lives', () => {
   assert.ok(!text.some(line => line.includes('Location:')))
 })
 
+test('kernel is the job title', () => {
+  const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
+  assert.ok(text.some(line => /^\. Kernel: \.+ Founder @ Microlink$/.test(line)))
+})
+
 test('the card shows site metrics next to GitHub stats', () => {
   const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
   assert.ok(text.some(line => /Stars: \.+ 18,155$/.test(line)))

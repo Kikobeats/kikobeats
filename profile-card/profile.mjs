@@ -5,7 +5,7 @@ export const PROFILE = {
   birthDate: new Date(Date.UTC(1992, 3, 29)),
   system: [
     ['Host', 'Murcia, Spain'],
-    ['Kernel', 'Node.js'],
+    ['Kernel', 'Founder @ Microlink'],
     ['Shell', 'fish']
   ],
   languages: [
