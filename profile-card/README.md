@@ -8,7 +8,7 @@ Renders the neofetch-style intro card at the top of the profile README: profile 
 | `github.mjs` | GitHub GraphQL stats: repos, contributed repos, followers, and Commits: every commit GitHub credits since signup plus its private contributions count (work in repos the token cannot read, which GitHub does not split by type). |
 | `site.mjs` | Reads stars (across Kikobeats, microlinkhq and other orgs), npm downloads/mo, X followers and reqs/mo per service from the plain-text https://kikobeats.com, so the card and the site always agree. Stars and npm are required: the run fails if they are missing. X followers and reqs/mo are optional on the site too, so their lines are left out when the site has no number. |
 | `fixtures/kikobeats.com.txt` | Snapshot of the site used by the parser tests. |
-| `render.mjs` | Pure SVG rendering: dot leaders, rules, themes, uptime. |
+| `render.mjs` | Pure SVG rendering: dot leaders, rules, themes, uptime. The card is as wide as the GitHub README column (`GITHUB_README_COLUMN_WIDTH`, 847px), so `width="100%"` in the README barely scales it and the 14px text stays at code-block size. |
 | `index.mjs` | Entry point. Fetches stats and writes `dark.svg` and `light.svg`. |
 
 ```sh

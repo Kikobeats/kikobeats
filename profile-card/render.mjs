@@ -1,8 +1,9 @@
-const INFO_WIDTH = 76
-const FONT_SIZE = 15
+const GITHUB_README_COLUMN_WIDTH = 847
+const FONT_SIZE = 14
 const CHAR_WIDTH = FONT_SIZE * 0.62
 const LINE_HEIGHT = 20
 const PADDING = 24
+const INFO_WIDTH = Math.floor((GITHUB_README_COLUMN_WIDTH - PADDING * 2) / CHAR_WIDTH)
 const RULE = '─'
 
 export const THEMES = {
@@ -101,4 +102,4 @@ export const renderSvg = ({ infoLines, theme }) => {
 `
 }
 
-export { INFO_WIDTH }
+export { INFO_WIDTH, FONT_SIZE, GITHUB_README_COLUMN_WIDTH }
