@@ -10,7 +10,8 @@ export const PROFILE = {
   ],
   previously: 'Vercel, IBM Research, Audiense, Rakuten',
   gaming: [
-    ['Playing', 'Counter Strike, Apex Legends, PUBG'],
+    ['Playing', 'Claude'],
+    ['Played', 'Counter Strike, Apex Legends, PUBG'],
     ['Favorite', 'FFVII, Dark Souls']
   ],
   contact: [

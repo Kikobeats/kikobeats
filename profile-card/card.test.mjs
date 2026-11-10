@@ -166,8 +166,9 @@ test('gaming is its own section before contact', () => {
   const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
   const heading = text.findIndex(line => line.startsWith('- Gaming '))
   assert.ok(heading > 0)
-  assert.match(text[heading + 1], /^\. Playing: \.+ Counter Strike, Apex Legends, PUBG$/)
-  assert.match(text[heading + 2], /^\. Favorite: \.+ FFVII, Dark Souls$/)
+  assert.match(text[heading + 1], /^\. Playing: \.+ Claude$/)
+  assert.match(text[heading + 2], /^\. Played: \.+ Counter Strike, Apex Legends, PUBG$/)
+  assert.match(text[heading + 3], /^\. Favorite: \.+ FFVII, Dark Souls$/)
   assert.ok(heading < text.findIndex(line => line.startsWith('- Contact ')))
 })
 
