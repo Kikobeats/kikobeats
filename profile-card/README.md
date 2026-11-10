@@ -7,7 +7,7 @@ Renders the neofetch-style intro card at the top of the profile README: ASCII av
 | `avatar.txt` | ASCII avatar, committed. Regenerate with `npm run card:avatar` (needs ImageMagick). |
 | `profile.mjs` | Static profile fields and the line layout. Edit this to change what the card says. |
 | `github.mjs` | GitHub GraphQL stats: repos, contributed repos, followers, all-time commits. |
-| `site.mjs` | Reads stars (across Kikobeats, microlinkhq and other orgs), npm downloads/mo, X followers and reqs/mo per service from the plain-text https://kikobeats.com, so the card and the site always agree. Throws if the page format changes, so the workflow fails instead of drawing wrong numbers. |
+| `site.mjs` | Reads stars (across Kikobeats, microlinkhq and other orgs), npm downloads/mo, X followers and reqs/mo per service from the plain-text https://kikobeats.com, so the card and the site always agree. Stars and npm are required: the run fails if they are missing. X followers and reqs/mo are optional on the site too, so their lines are left out when the site has no number. |
 | `fixtures/kikobeats.com.txt` | Snapshot of the site used by the parser tests. |
 | `render.mjs` | Pure SVG rendering: dot leaders, rules, themes, uptime. |
 | `index.mjs` | Entry point. Fetches stats and writes `dark.svg` and `light.svg`. |

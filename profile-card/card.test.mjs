@@ -126,14 +126,20 @@ test('sumCommits adds commits across years', () => {
 test('parseSiteNumbers reads the headline metrics from the ANSI text page', () => {
   assert.deepEqual(parseSiteNumbers(SITE_FIXTURE), {
     stars: '18,155',
-    xFollowers: '4,157',
     npmDownloads: '115M',
+    xFollowers: '4,157',
     requests: { 'microlink.io': '140M', 'unavatar.io': '229M' }
   })
 })
 
 test('parseSiteNumbers fails loudly when the page format changes', () => {
   assert.throws(() => parseSiteNumbers('Kiko Beats'), /missing the stars metric/)
+})
+
+test('host is where Kiko lives', () => {
+  const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
+  assert.ok(text.some(line => /^\. Host: \.+ Murcia, Spain$/.test(line)))
+  assert.ok(!text.some(line => line.includes('Location:')))
 })
 
 test('the card shows site metrics next to GitHub stats', () => {
@@ -143,9 +149,27 @@ test('the card shows site metrics next to GitHub stats', () => {
   assert.ok(text.some(line => /Requests\.unavatar\.io: \.+ 229M reqs\/mo$/.test(line)))
 })
 
-test('the card refuses to render without request numbers for a service', () => {
-  const site = { ...STATS.site, requests: { 'microlink.io': '140M' } }
-  assert.throws(() => buildInfoLines({ ...STATS, site }, utc(2026, 11, 10)), /no reqs\/mo for unavatar\.io/)
+test('parseSiteNumbers treats X followers and requests as optional, like the site does', () => {
+  const page = [
+    '  https://github.com/kikobeats            18,185 ★',
+    '  https://x.com/kikobeats',
+    '  https://npm.im/~kikobeats               133M downloads/mo',
+    '  https://linkedin.com/in/kikobeats',
+    '  https://microlink.io',
+    '    Oct 25  Free API key, 25 requests per day'
+  ].join('\n')
+  assert.deepEqual(parseSiteNumbers(page), { stars: '18,185', npmDownloads: '133M', xFollowers: null, requests: {} })
+})
+
+test('the card drops X and request lines the site has no number for', () => {
+  const site = { ...STATS.site, xFollowers: null, requests: { 'microlink.io': '140M' } }
+  const lines = buildInfoLines({ ...STATS, site }, utc(2026, 11, 10))
+  const text = cardText(lines)
+  assert.ok(text.some(line => /^\. npm: \.+ 115M downloads\/mo$/.test(line)))
+  assert.ok(!text.some(line => line.includes('followers') && line.includes('X:')))
+  assert.ok(text.some(line => line.includes('Requests.microlink.io')))
+  assert.ok(!text.some(line => line.includes('Requests.unavatar.io')))
+  for (const line of lines.filter(line => line.length > 1)) assert.equal(lineLength(line), INFO_WIDTH)
 })
 
 test('renderSvg centers a shorter avatar against the info column', () => {

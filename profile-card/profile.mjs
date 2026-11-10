@@ -4,10 +4,9 @@ export const PROFILE = {
   handle: 'kiko@beats',
   birthDate: new Date(Date.UTC(1992, 3, 29)),
   system: [
-    ['Host', 'microlink.io'],
+    ['Host', 'Murcia, Spain'],
     ['Kernel', 'Node.js'],
-    ['Shell', 'fish'],
-    ['Location', 'Murcia, Spain']
+    ['Shell', 'fish']
   ],
   languages: [
     ['Languages.Programming', 'JavaScript, TypeScript, Shell'],
@@ -27,12 +26,6 @@ export const PROFILE = {
   services: ['microlink.io', 'unavatar.io']
 }
 
-const requestsOf = (site, host) => {
-  const value = site.requests[host]
-  if (!value) throw new Error(`kikobeats.com has no reqs/mo for ${host}`)
-  return value
-}
-
 const fields = pairs => pairs.map(([key, value]) => fieldLine(key, value))
 
 export const buildInfoLines = ({ github, site }, now, profile = PROFILE) => [
@@ -50,6 +43,8 @@ export const buildInfoLines = ({ github, site }, now, profile = PROFILE) => [
   sectionLine('Stats'),
   splitFieldLine(['Repos', `${formatNumber(github.repos)} {Contributed: ${formatNumber(github.contributedTo)}}`], ['Stars', site.stars]),
   splitFieldLine(['Commits', formatNumber(github.commits)], ['Followers', formatNumber(github.followers)]),
-  splitFieldLine(['npm', `${site.npmDownloads} downloads/mo`], ['X', `${site.xFollowers} followers`]),
-  ...fields(profile.services.map(host => [`Requests.${host}`, `${requestsOf(site, host)} reqs/mo`]))
+  site.xFollowers
+    ? splitFieldLine(['npm', `${site.npmDownloads} downloads/mo`], ['X', `${site.xFollowers} followers`])
+    : fieldLine('npm', `${site.npmDownloads} downloads/mo`),
+  ...fields(profile.services.filter(host => site.requests[host]).map(host => [`Requests.${host}`, `${site.requests[host]} reqs/mo`]))
 ]
