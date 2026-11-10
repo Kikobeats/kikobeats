@@ -6,7 +6,6 @@ import { buildInfoLines } from './profile.mjs'
 import { parseSiteNumbers } from './site.mjs'
 import {
   INFO_WIDTH,
-  asciiLayout,
   THEMES,
   blankLine,
   fieldLine,
@@ -87,13 +86,11 @@ test('headings fill the width with a rule', () => {
 
 test('renderSvg escapes markup and emits one text node per line', () => {
   const svg = renderSvg({
-    asciiLines: ['<&>', 'ab'],
     infoLines: [fieldLine('A&B', '<value>'), blankLine()],
     theme: THEMES.dark
   })
   assert.match(svg, /^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/)
-  assert.equal((svg.match(/<text /g) ?? []).length, 4)
-  assert.ok(svg.includes('&lt;&amp;&gt;'))
+  assert.equal((svg.match(/<text /g) ?? []).length, 2)
   assert.ok(svg.includes('A&amp;B: '))
   assert.ok(svg.includes(' &lt;value&gt;'))
   assert.ok(!svg.includes('<value>'))
@@ -101,7 +98,7 @@ test('renderSvg escapes markup and emits one text node per line', () => {
 })
 
 test('renderSvg is deterministic', () => {
-  const input = { asciiLines: ['x'], infoLines: buildInfoLines(STATS, utc(2026, 11, 10)), theme: THEMES.light }
+  const input = { infoLines: buildInfoLines(STATS, utc(2026, 11, 10)), theme: THEMES.light }
   assert.equal(renderSvg(input), renderSvg(input))
 })
 
@@ -207,28 +204,10 @@ test('the card drops X followers and request counts the site has no number for',
   for (const line of lines.filter(line => line.length > 1)) assert.equal(lineLength(line), INFO_WIDTH)
 })
 
-test('renderSvg centers a shorter avatar against the info column', () => {
-  const svg = renderSvg({ asciiLines: ['x'], infoLines: [blankLine(), blankLine(), blankLine()], theme: THEMES.dark })
-  const [asciiY] = svg.match(/class="ascii" x="\d+" y="([\d.]+)"/).slice(1)
-  const infoYs = [...svg.matchAll(/<text x="[\d.]+" y="([\d.]+)"/g)].map(([, y]) => y)
-  assert.equal(asciiY, infoYs[1])
-})
-
-test('a taller avatar shrinks to the info column height instead of stretching the card', () => {
-  const infoLines = Array.from({ length: 20 }, blankLine)
-  const asciiLines = Array.from({ length: 50 }, () => '#'.repeat(100))
-  const layout = asciiLayout({ asciiLines, infoLines })
-  assert.equal(layout.lineHeight * asciiLines.length, 20 * 20)
-  assert.equal(layout.contentHeight, 20 * 20)
-  assert.equal(layout.fontSize, 6)
-  const svg = renderSvg({ asciiLines, infoLines, theme: THEMES.light })
-  assert.match(svg, /\.ascii \{ font-size: 6px; \}/)
-  assert.match(svg, /height="448"/)
-})
-
-test('the committed avatar is drawn at the same height as the info column', () => {
-  const asciiLines = readFileSync(new URL('avatar.txt', import.meta.url), 'utf8').trimEnd().split('\n')
+test('the card is only the info column, sized to fit it', () => {
   const infoLines = buildInfoLines(STATS, utc(2026, 11, 10))
-  const layout = asciiLayout({ asciiLines, infoLines })
-  assert.equal(Math.round(layout.lineHeight * asciiLines.length), infoLines.length * 20)
+  const svg = renderSvg({ infoLines, theme: THEMES.dark })
+  assert.ok(!svg.includes('ascii'))
+  assert.equal((svg.match(/<text /g) ?? []).length, infoLines.length)
+  assert.match(svg, new RegExp(`height="${48 + infoLines.length * 20}"`))
 })
