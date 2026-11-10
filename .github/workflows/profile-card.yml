@@ -1,0 +1,40 @@
+name: profile-card
+
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'profile-card/**'
+      - '!profile-card/*.svg'
+      - '.github/workflows/profile-card.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-card
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - run: npm test
+      - run: npm run card
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROFILE_CARD_TOKEN || secrets.GITHUB_TOKEN }}
+      - name: Commit card
+        run: |
+          git add profile-card/dark.svg profile-card/light.svg
+          git diff --cached --quiet && exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore(profile-card): refresh stats'
+          git push

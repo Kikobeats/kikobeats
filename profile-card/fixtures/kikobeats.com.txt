@@ -1,0 +1,99 @@
+  [1mKiko Beats[0m
+  [2mBuilding web infra & open source[0m
+
+  [34mhttps://github.com/kikobeats            [0m[1m18,155[0m [2m★[0m
+  [34mhttps://x.com/kikobeats                 [0m[1m4,157[0m [2mfollowers[0m
+  [34mhttps://npm.im/~kikobeats               [0m[1m115M[0m [2mdownloads/mo[0m
+  [34mhttps://linkedin.com/in/kikobeats[0m
+
+  [1;35mRUNNING[0m
+
+  [1mmicrolink.io[0m  Enter URL, receive data.
+  [34mhttps://microlink.io                    [0m[1m140M[0m [2mreqs/mo[0m
+    [2mOct 25[0m  Free API key, 25 requests per day
+    [2mSep 21[0m  Microlink skill for AI agents
+    [2mSep 07[0m  Browser functions API
+
+  [1munavatar.io[0m  Get unified user avatar.
+  [34mhttps://unavatar.io                     [0m[1m229M[0m [2mreqs/mo[0m
+    [2mOct 14[0m  +99 providers supported
+    [2mAug 31[0m  BIMI brand logos support
+    [2mMay 12[0m  Publishable keys support
+
+  [1;35mEXPERIENCES[0m
+
+  [1mVercel                                                  [0m[2m2021 - 2025[0m
+  [2mSenior Software Engineer · Full-time[0m
+  Making the Web, faster. Next.js contributor. Engineering at Edge
+  Functions. Web Standards.
+
+  [1mTesla Hunt                                              [0m[2m2020 - 2025[0m
+  [2mFounder[0m
+  Real-time Tesla Certified Pre Owned (CPO) vehicles monitoring over Europe
+  market.
+
+  [1mIBM Research                                            [0m[2m2019 - 2021[0m
+  [2mSenior Web Engineer[0m
+
+  [1mIronhack                                                [0m[2m2017 - 2018[0m
+  [2mJavaScript Teacher[0m
+
+  [1mAudiense                                                [0m[2m2015 - 2018[0m
+  [2mProduct Engineer[0m
+
+  [1mRakuten                                                 [0m[2m2015 - 2016[0m
+  [2mSoftware Junior Engineer[0m
+  Part of European development team called EU TaskForce as Full Stack
+  Engineer. Developing, scaling and improving the IT architecture between
+  Japan and the European marketplace (Spain, England and Germany).
+
+  [1;35mBLOG[0m
+
+  [1mLess suck logs                                          [0m[2mDecember 2025[0m
+  [34mhttps://kikobeats.com/less-suck-logs/[0m
+
+  [1mGitHub bulk operations                                  [0m[2mDecember 2025[0m
+  [34mhttps://kikobeats.com/github-bulk-operations/[0m
+
+  [1mK8s wildcard SSL                                        [0m[2mNovember 2025[0m
+  [34mhttps://kikobeats.com/full-strict-ssl/[0m
+
+  [1mSpotify → YouTube Music                                 [0m[2mNovember 2025[0m
+  [34mhttps://kikobeats.com/spotify-to-youtube-music/[0m
+
+  [1mStandardplast lineup                                    [0m[2mDecember 2024[0m
+  [34mhttps://kikobeats.com/standardplast/[0m
+
+  All posts: [34mhttps://kikobeats.com/blog[0m
+
+  [1;35mOPEN SOURCE[0m
+
+  [1mKikobeats/awesome-api                                   [0m[33m2,987 ★[0m
+  A curated list of awesome resources for design and implement RESTful
+  API's.
+  [34mhttps://github.com/Kikobeats/awesome-api[0m
+
+  [1mmicrolinkhq/metascraper                                 [0m[33m2,752 ★[0m
+  Scrape metadata from any URL using Open Graph, JSON-LD, HTML meta tags,
+  and smart fallbacks.
+  [34mhttps://github.com/microlinkhq/metascraper[0m
+
+  [1mmicrolinkhq/browserless                                 [0m[33m1,842 ★[0m
+  The headless Chrome/Chromium driver on top of Puppeteer. Take screenshots,
+  generate PDFs, extract text and HTML with a production-ready API.
+  [34mhttps://github.com/microlinkhq/browserless[0m
+
+  [1mmicrolinkhq/unavatar                                    [0m[33m1,476 ★[0m
+  Get unified user avatar from social networks, including Instagram,
+  SoundCloud, Telegram, Twitter, YouTube & more.
+  [34mhttps://github.com/microlinkhq/unavatar[0m
+
+  [1mKikobeats/untracked                                     [0m[33m834 ★[0m
+  Ignore common junk files in zip/lambda/webpack bundles with a universal
+  untracked file list.
+  [34mhttps://github.com/Kikobeats/untracked[0m
+
+  All projects: [34mhttps://kikobeats.com/oss[0m
+
+  [1mjosefrancisco.verdu@gmail.com[0m
+  [2m© 2026 Kiko Beats[0m
