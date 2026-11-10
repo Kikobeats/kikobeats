@@ -156,6 +156,12 @@ test('the running line still fits when request counts reach billions', () => {
   assert.ok(line[2].text.length >= 2)
 })
 
+test('sports replaces the shell line', () => {
+  const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
+  assert.ok(text.some(line => /^\. Sports: \.+ Basketball, Windsurfing, Crossfit$/.test(line)))
+  assert.ok(!text.some(line => line.includes('Shell:')))
+})
+
 test('kernel is the job title', () => {
   const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
   assert.ok(text.some(line => /^\. Kernel: \.+ Founder @ Microlink$/.test(line)))

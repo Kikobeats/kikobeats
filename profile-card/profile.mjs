@@ -6,7 +6,7 @@ export const PROFILE = {
   system: [
     ['Host', 'Murcia, Spain'],
     ['Kernel', 'Founder @ Microlink'],
-    ['Shell', 'fish']
+    ['Sports', 'Basketball, Windsurfing, Crossfit']
   ],
   previously: 'Vercel, IBM Research, Audiense, Rakuten',
   contact: [
