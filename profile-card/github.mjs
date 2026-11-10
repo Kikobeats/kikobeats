@@ -25,7 +25,7 @@ const PROFILE_QUERY = `query($login: String!) {
 
 const COMMITS_QUERY = `query($login: String!, $from: DateTime!, $to: DateTime!) {
   user(login: $login) {
-    contributionsCollection(from: $from, to: $to) { totalCommitContributions }
+    contributionsCollection(from: $from, to: $to) { totalCommitContributions restrictedContributionsCount }
   }
 }`
 
@@ -39,7 +39,8 @@ export const yearRanges = (createdAt, now) => {
   return ranges
 }
 
-export const sumCommits = years => years.reduce((total, year) => total + year.totalCommitContributions, 0)
+export const sumCommits = years =>
+  years.reduce((total, year) => total + year.totalCommitContributions + year.restrictedContributionsCount, 0)
 
 const fetchCommits = async (token, login, createdAt, now) => {
   const years = await Promise.all(

@@ -7,8 +7,8 @@ const PADDING = 24
 const RULE = '─'
 
 export const THEMES = {
-  dark: { background: '#161b22', border: '#30363d', text: '#c9d1d9', key: '#ffa657', value: '#a5d6ff', dots: '#616e7f', add: '#3fb950' },
-  light: { background: '#f6f8fa', border: '#d0d7de', text: '#24292f', key: '#953800', value: '#0a3069', dots: '#c2cfde', add: '#1a7f37' }
+  dark: { background: '#161b22', border: '#30363d', text: '#c9d1d9', key: '#ffa657', value: '#a5d6ff', dots: '#616e7f' },
+  light: { background: '#f6f8fa', border: '#d0d7de', text: '#24292f', key: '#953800', value: '#0a3069', dots: '#c2cfde' }
 }
 
 const escapeXml = text =>
@@ -77,34 +77,51 @@ export const lineLength = segments => segments.reduce((total, { text }) => total
 const renderSegments = segments =>
   segments.map(({ text, role }) => `<tspan class="${role}">${escapeXml(text)}</tspan>`).join('')
 
-const renderStyle = theme => `
+const BASELINE_INSET = 5
+const round = value => Math.round(value * 100) / 100
+
+const renderStyle = (theme, asciiFontSize) => `
     text { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; font-size: ${FONT_SIZE}px; white-space: pre; }
+    .ascii { font-size: ${asciiFontSize}px; }
     .ascii, .text { fill: ${theme.text}; }
     .key { fill: ${theme.key}; }
     .value { fill: ${theme.value}; }
-    .dots { fill: ${theme.dots}; }
-    .add { fill: ${theme.add}; }`
+    .dots { fill: ${theme.dots}; }`
+
+export const asciiLayout = ({ asciiLines, infoLines }) => {
+  const infoHeight = infoLines.length * LINE_HEIGHT
+  const scale = Math.min(1, infoHeight / (asciiLines.length * LINE_HEIGHT))
+  const lineHeight = LINE_HEIGHT * scale
+  const columns = Math.max(...asciiLines.map(line => [...line].length))
+  const contentHeight = Math.max(infoHeight, asciiLines.length * lineHeight)
+  return {
+    fontSize: round(FONT_SIZE * scale),
+    lineHeight,
+    width: columns * CHAR_WIDTH * scale,
+    top: PADDING + (contentHeight - asciiLines.length * lineHeight) / 2,
+    baselineInset: BASELINE_INSET * scale,
+    contentHeight
+  }
+}
 
 export const renderSvg = ({ asciiLines, infoLines, theme }) => {
-  const asciiWidth = Math.max(...asciiLines.map(line => [...line].length))
-  const rows = Math.max(asciiLines.length, infoLines.length)
-  const infoX = PADDING + (asciiWidth + COLUMN_GAP) * CHAR_WIDTH
+  const ascii = asciiLayout({ asciiLines, infoLines })
+  const infoX = round(PADDING + ascii.width + COLUMN_GAP * CHAR_WIDTH)
   const width = Math.ceil(infoX + INFO_WIDTH * CHAR_WIDTH + PADDING)
-  const height = PADDING * 2 + rows * LINE_HEIGHT
-  const baseline = row => PADDING + (row + 1) * LINE_HEIGHT - 5
+  const height = Math.ceil(PADDING * 2 + ascii.contentHeight)
+  const infoBaseline = row => PADDING + (row + 1) * LINE_HEIGHT - BASELINE_INSET
+  const asciiBaseline = row => round(ascii.top + (row + 1) * ascii.lineHeight - ascii.baselineInset)
 
-  const asciiOffset = Math.floor((rows - asciiLines.length) / 2)
-
-  const ascii = asciiLines.map((line, row) =>
-    `<text class="ascii" x="${PADDING}" y="${baseline(row + asciiOffset)}">${escapeXml(line)}</text>`)
-  const info = infoLines.map((segments, row) =>
-    `<text x="${infoX}" y="${baseline(row)}">${renderSegments(segments)}</text>`)
+  const asciiNodes = asciiLines.map((line, row) =>
+    `<text class="ascii" x="${PADDING}" y="${asciiBaseline(row)}">${escapeXml(line)}</text>`)
+  const infoNodes = infoLines.map((segments, row) =>
+    `<text x="${infoX}" y="${infoBaseline(row)}">${renderSegments(segments)}</text>`)
 
   return `<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-  <style>${renderStyle(theme)}
+  <style>${renderStyle(theme, ascii.fontSize)}
   </style>
   <rect width="${width}" height="${height}" rx="12" fill="${theme.background}" stroke="${theme.border}"/>
-  ${[...ascii, ...info].join('\n  ')}
+  ${[...asciiNodes, ...infoNodes].join('\n  ')}
 </svg>
 `
 }

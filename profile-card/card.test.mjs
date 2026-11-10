@@ -1,12 +1,12 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { toChar } from './ascii.mjs'
 import { readFileSync } from 'node:fs'
 import { sumCommits, yearRanges } from './github.mjs'
 import { buildInfoLines } from './profile.mjs'
 import { parseSiteNumbers } from './site.mjs'
 import {
   INFO_WIDTH,
+  asciiLayout,
   THEMES,
   blankLine,
   fieldLine,
@@ -118,8 +118,9 @@ test('yearRanges returns a single range for a same-year signup', () => {
   assert.deepEqual(ranges, [{ year: 2026, from: '2026-03-01T00:00:00.000Z', to: '2026-11-10T00:00:00.000Z' }])
 })
 
-test('sumCommits adds commits across years', () => {
-  assert.equal(sumCommits([{ totalCommitContributions: 10 }, { totalCommitContributions: 5 }]), 15)
+test('sumCommits adds public commits and private contributions across years', () => {
+  const year = (commits, restricted) => ({ totalCommitContributions: commits, restrictedContributionsCount: restricted })
+  assert.equal(sumCommits([year(10, 3), year(5, 0)]), 18)
   assert.equal(sumCommits([]), 0)
 })
 
@@ -192,13 +193,26 @@ test('the card drops X followers and request counts the site has no number for',
 
 test('renderSvg centers a shorter avatar against the info column', () => {
   const svg = renderSvg({ asciiLines: ['x'], infoLines: [blankLine(), blankLine(), blankLine()], theme: THEMES.dark })
-  const [asciiY] = svg.match(/class="ascii" x="\d+" y="(\d+)"/).slice(1)
-  const infoYs = [...svg.matchAll(/<text x="[\d.]+" y="(\d+)"/g)].map(([, y]) => y)
+  const [asciiY] = svg.match(/class="ascii" x="\d+" y="([\d.]+)"/).slice(1)
+  const infoYs = [...svg.matchAll(/<text x="[\d.]+" y="([\d.]+)"/g)].map(([, y]) => y)
   assert.equal(asciiY, infoYs[1])
 })
 
-test('toChar maps white to blank and black to the densest glyph', () => {
-  assert.equal(toChar(255), ' ')
-  assert.equal(toChar(0), '$')
-  assert.notEqual(toChar(128), ' ')
+test('a taller avatar shrinks to the info column height instead of stretching the card', () => {
+  const infoLines = Array.from({ length: 20 }, blankLine)
+  const asciiLines = Array.from({ length: 50 }, () => '#'.repeat(100))
+  const layout = asciiLayout({ asciiLines, infoLines })
+  assert.equal(layout.lineHeight * asciiLines.length, 20 * 20)
+  assert.equal(layout.contentHeight, 20 * 20)
+  assert.equal(layout.fontSize, 6)
+  const svg = renderSvg({ asciiLines, infoLines, theme: THEMES.light })
+  assert.match(svg, /\.ascii \{ font-size: 6px; \}/)
+  assert.match(svg, /height="448"/)
+})
+
+test('the committed avatar is drawn at the same height as the info column', () => {
+  const asciiLines = readFileSync(new URL('avatar.txt', import.meta.url), 'utf8').trimEnd().split('\n')
+  const infoLines = buildInfoLines(STATS, utc(2026, 11, 10))
+  const layout = asciiLayout({ asciiLines, infoLines })
+  assert.equal(Math.round(layout.lineHeight * asciiLines.length), infoLines.length * 20)
 })

@@ -6,7 +6,6 @@
   },
   "scripts": {
     "card": "node profile-card/index.mjs",
-    "card:avatar": "curl -sL -o /tmp/avatar.png 'https://github.com/Kikobeats.png?size=460' && node profile-card/ascii.mjs /tmp/avatar.png 48 profile-card/avatar.txt",
     "test": "node --test profile-card/"
   }
 }
