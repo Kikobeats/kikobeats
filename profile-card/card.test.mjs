@@ -5,6 +5,8 @@ import { sumCommits, yearRanges } from './github.mjs'
 import { buildInfoLines } from './profile.mjs'
 import { parseSiteNumbers } from './site.mjs'
 import {
+  FONT_SIZE,
+  GITHUB_README_COLUMN_WIDTH,
   INFO_WIDTH,
   THEMES,
   blankLine,
@@ -82,6 +84,15 @@ test('split field lines hold two pairs within the width', () => {
 test('headings fill the width with a rule', () => {
   assert.equal(lineLength(headingLine('kiko@beats')), INFO_WIDTH)
   assert.equal(lineLength(sectionLine('Contact')), INFO_WIDTH)
+})
+
+test('card fills the README column without scaling text past GitHub body size', () => {
+  const svg = renderSvg({ infoLines: [blankLine()], theme: THEMES.dark })
+  const width = Number(svg.match(/ width="(\d+)"/)[1])
+  const renderedFontSize = FONT_SIZE * (GITHUB_README_COLUMN_WIDTH / width)
+  assert.ok(width <= GITHUB_README_COLUMN_WIDTH, `card ${width}px is wider than the column`)
+  assert.ok(renderedFontSize < 16, `text renders at ${renderedFontSize.toFixed(1)}px, GitHub body text is 16px`)
+  assert.ok(renderedFontSize <= FONT_SIZE * 1.02, `card is stretched ${(renderedFontSize / FONT_SIZE).toFixed(2)}x`)
 })
 
 test('renderSvg escapes markup and emits one text node per line', () => {
