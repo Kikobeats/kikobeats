@@ -142,6 +142,12 @@ test('host is where Kiko lives', () => {
   assert.ok(!text.some(line => line.includes('Location:')))
 })
 
+test('the card has no languages or founded lines', () => {
+  const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10))).join('\n')
+  assert.ok(!text.includes('Languages.'))
+  assert.ok(!text.includes('Work.Founded'))
+})
+
 test('kernel is the job title', () => {
   const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
   assert.ok(text.some(line => /^\. Kernel: \.+ Founder @ Microlink$/.test(line)))

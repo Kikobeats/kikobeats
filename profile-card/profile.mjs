@@ -8,13 +8,8 @@ export const PROFILE = {
     ['Kernel', 'Founder @ Microlink'],
     ['Shell', 'fish']
   ],
-  languages: [
-    ['Languages.Programming', 'JavaScript, TypeScript, Shell'],
-    ['Languages.Real', 'Spanish, English']
-  ],
   work: [
     ['Work.Running', 'microlink.io, unavatar.io'],
-    ['Work.Founded', 'Tesla Hunt'],
     ['Work.Previously', 'Vercel, IBM Research, Audiense, Rakuten']
   ],
   contact: [
@@ -32,8 +27,6 @@ export const buildInfoLines = ({ github, site }, now, profile = PROFILE) => [
   headingLine(profile.handle),
   fieldLine('Uptime', uptime(profile.birthDate, now)),
   ...fields(profile.system),
-  blankLine(),
-  ...fields(profile.languages),
   blankLine(),
   ...fields(profile.work),
   blankLine(),
