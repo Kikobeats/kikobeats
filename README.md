@@ -1,7 +1,7 @@
 <a href="https://kikobeats.com">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="profile-card/dark.svg">
-    <img alt="Kiko Beats: Building web infra & open source. Writing code since 2012, previously at Vercel and IBM, running microlink.io and unavatar.io." src="profile-card/light.svg">
+    <img width="100%" alt="Kiko Beats: Building web infra & open source. Writing code since 2012, previously at Vercel and IBM, running microlink.io and unavatar.io." src="profile-card/light.svg">
   </picture>
 </a>
 
