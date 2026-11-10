@@ -162,6 +162,14 @@ test('sports replaces the shell line', () => {
   assert.ok(!text.some(line => line.includes('Shell:')))
 })
 
+test('gaming is its own section before contact', () => {
+  const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
+  const heading = text.findIndex(line => line.startsWith('- Gaming '))
+  assert.ok(heading > 0)
+  assert.match(text[heading + 1], /^\. Playing: \.+ Counter Strike, Apex Legends$/)
+  assert.ok(heading < text.findIndex(line => line.startsWith('- Contact ')))
+})
+
 test('kernel is the job title', () => {
   const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
   assert.ok(text.some(line => /^\. Kernel: \.+ Founder @ Microlink$/.test(line)))

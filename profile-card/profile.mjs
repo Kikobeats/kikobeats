@@ -9,6 +9,7 @@ export const PROFILE = {
     ['Sports', 'Basketball, Windsurfing, Crossfit']
   ],
   previously: 'Vercel, IBM Research, Audiense, Rakuten',
+  gaming: [['Playing', 'Counter Strike, Apex Legends']],
   contact: [
     ['Website', 'kikobeats.com'],
     ['Email', 'josefrancisco.verdu@gmail.com'],
@@ -29,6 +30,9 @@ export const buildInfoLines = ({ github, site }, now, profile = PROFILE) => [
   blankLine(),
   fieldLine('Work.Running', profile.services.map(host => withRequests(host, site.requests)).join(', ')),
   fieldLine('Work.Previously', profile.previously),
+  blankLine(),
+  sectionLine('Gaming'),
+  ...fields(profile.gaming),
   blankLine(),
   sectionLine('Contact'),
   ...fields(profile.contact),
