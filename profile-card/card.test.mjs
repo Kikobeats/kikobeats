@@ -55,6 +55,11 @@ test('every info line has the same width so columns align', () => {
   for (const line of lines) assert.equal(lineLength(line), INFO_WIDTH, line.map(({ text }) => text).join(''))
 })
 
+test('uptime on the card counts from the birth date, not the GitHub signup', () => {
+  const [, uptimeLine] = buildInfoLines(STATS, utc(2026, 11, 10))
+  assert.equal(uptimeLine.at(-1).text, ' 34 years, 6 months, 12 days')
+})
+
 test('field lines pad with dots and end with the value', () => {
   const line = fieldLine('OS', 'macOS')
   const text = line.map(({ text }) => text).join('')

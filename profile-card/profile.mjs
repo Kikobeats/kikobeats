@@ -2,6 +2,7 @@ import { blankLine, fieldLine, formatNumber, headingLine, sectionLine, splitFiel
 
 export const PROFILE = {
   handle: 'kiko@beats',
+  birthDate: new Date(Date.UTC(1992, 3, 29)),
   fields: [
     ['OS', 'macOS'],
     ['Shell', 'fish'],
@@ -27,7 +28,7 @@ export const PROFILE = {
 
 export const buildInfoLines = (stats, now, profile = PROFILE) => [
   headingLine(profile.handle),
-  fieldLine('Uptime', uptime(stats.createdAt, now)),
+  fieldLine('Uptime', uptime(profile.birthDate, now)),
   ...profile.fields.map(([key, value]) => fieldLine(key, value)),
   blankLine(),
   ...profile.languages.map(([key, value]) => fieldLine(key, value)),
