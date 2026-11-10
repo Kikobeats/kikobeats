@@ -93,8 +93,10 @@ export const renderSvg = ({ asciiLines, infoLines, theme }) => {
   const height = PADDING * 2 + rows * LINE_HEIGHT
   const baseline = row => PADDING + (row + 1) * LINE_HEIGHT - 5
 
+  const asciiOffset = Math.floor((rows - asciiLines.length) / 2)
+
   const ascii = asciiLines.map((line, row) =>
-    `<text class="ascii" x="${PADDING}" y="${baseline(row)}">${escapeXml(line)}</text>`)
+    `<text class="ascii" x="${PADDING}" y="${baseline(row + asciiOffset)}">${escapeXml(line)}</text>`)
   const info = infoLines.map((segments, row) =>
     `<text x="${infoX}" y="${baseline(row)}">${renderSegments(segments)}</text>`)
 

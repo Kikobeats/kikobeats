@@ -1,8 +1,9 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
-import { fetchStats } from './github.mjs'
+import { fetchGithubStats } from './github.mjs'
 import { buildInfoLines } from './profile.mjs'
 import { renderSvg, THEMES } from './render.mjs'
+import { fetchSiteNumbers } from './site.mjs'
 
 const LOGIN = 'Kikobeats'
 const resolve = file => fileURLToPath(new URL(file, import.meta.url))
@@ -14,12 +15,12 @@ if (!token) {
 }
 
 const now = new Date()
-const stats = await fetchStats({ token, login: LOGIN, now })
+const [github, site] = await Promise.all([fetchGithubStats({ token, login: LOGIN, now }), fetchSiteNumbers()])
 const asciiLines = readFileSync(resolve('avatar.txt'), 'utf8').trimEnd().split('\n')
-const infoLines = buildInfoLines(stats, now)
+const infoLines = buildInfoLines({ github, site }, now)
 
 for (const [name, theme] of Object.entries(THEMES)) {
   writeFileSync(resolve(`${name}.svg`), renderSvg({ asciiLines, infoLines, theme }))
 }
 
-console.log(JSON.stringify({ ...stats, createdAt: stats.createdAt.toISOString() }))
+console.log(JSON.stringify({ github, site }))

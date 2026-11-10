@@ -1,5 +1,4 @@
 const GRAPHQL_ENDPOINT = 'https://api.github.com/graphql'
-const PAGE_SIZE = 100
 
 const graphql = async (token, query, variables = {}) => {
   const response = await fetch(GRAPHQL_ENDPOINT, {
@@ -24,12 +23,9 @@ const PROFILE_QUERY = `query($login: String!) {
   }
 }`
 
-const STARS_QUERY = `query($login: String!, $cursor: String) {
+const COMMITS_QUERY = `query($login: String!, $from: DateTime!, $to: DateTime!) {
   user(login: $login) {
-    repositories(ownerAffiliations: OWNER, first: ${PAGE_SIZE}, after: $cursor) {
-      nodes { stargazerCount }
-      pageInfo { hasNextPage endCursor }
-    }
+    contributionsCollection(from: $from, to: $to) { totalCommitContributions }
   }
 }`
 
@@ -43,56 +39,22 @@ export const yearRanges = (createdAt, now) => {
   return ranges
 }
 
-const CONTRIBUTIONS_QUERY = `query($login: String!, $from: DateTime!, $to: DateTime!) {
-  user(login: $login) {
-    contributionsCollection(from: $from, to: $to) {
-      totalCommitContributions
-      contributionCalendar { totalContributions }
-    }
-  }
-}`
+export const sumCommits = years => years.reduce((total, year) => total + year.totalCommitContributions, 0)
 
-export const sumContributions = years =>
-  years.reduce(
-    (totals, year) => ({
-      commits: totals.commits + year.totalCommitContributions,
-      contributions: totals.contributions + year.contributionCalendar.totalContributions
-    }),
-    { commits: 0, contributions: 0 }
-  )
-
-const fetchStars = async (token, login) => {
-  let stars = 0
-  let cursor = null
-  do {
-    const { user } = await graphql(token, STARS_QUERY, { login, cursor })
-    stars += user.repositories.nodes.reduce((total, { stargazerCount }) => total + stargazerCount, 0)
-    cursor = user.repositories.pageInfo.hasNextPage ? user.repositories.pageInfo.endCursor : null
-  } while (cursor)
-  return stars
-}
-
-const fetchContributions = async (token, login, createdAt, now) => {
+const fetchCommits = async (token, login, createdAt, now) => {
   const years = await Promise.all(
     yearRanges(createdAt, now).map(({ from, to }) =>
-      graphql(token, CONTRIBUTIONS_QUERY, { login, from, to }).then(({ user }) => user.contributionsCollection))
+      graphql(token, COMMITS_QUERY, { login, from, to }).then(({ user }) => user.contributionsCollection))
   )
-  return sumContributions(years)
+  return sumCommits(years)
 }
 
-export const fetchStats = async ({ token, login, now }) => {
+export const fetchGithubStats = async ({ token, login, now }) => {
   const { user } = await graphql(token, PROFILE_QUERY, { login })
-  const createdAt = new Date(user.createdAt)
-  const [stars, contributions] = await Promise.all([
-    fetchStars(token, login),
-    fetchContributions(token, login, createdAt, now)
-  ])
   return {
-    createdAt,
     followers: user.followers.totalCount,
     repos: user.repositories.totalCount,
     contributedTo: user.repositoriesContributedTo.totalCount,
-    stars,
-    ...contributions
+    commits: await fetchCommits(token, login, new Date(user.createdAt), now)
   }
 }

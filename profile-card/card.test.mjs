@@ -1,8 +1,10 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { toChar } from './ascii.mjs'
-import { sumContributions, yearRanges } from './github.mjs'
+import { readFileSync } from 'node:fs'
+import { sumCommits, yearRanges } from './github.mjs'
 import { buildInfoLines } from './profile.mjs'
+import { parseSiteNumbers } from './site.mjs'
 import {
   INFO_WIDTH,
   THEMES,
@@ -19,15 +21,14 @@ import {
 
 const utc = (year, month, day) => new Date(Date.UTC(year, month - 1, day))
 
+const SITE_FIXTURE = readFileSync(new URL('fixtures/kikobeats.com.txt', import.meta.url), 'utf8')
+
 const STATS = {
-  createdAt: new Date('2012-08-04T21:52:28Z'),
-  followers: 1752,
-  repos: 571,
-  contributedTo: 89,
-  stars: 9869,
-  commits: 47699,
-  contributions: 71363
+  github: { followers: 1752, repos: 571, contributedTo: 89, commits: 47699 },
+  site: parseSiteNumbers(SITE_FIXTURE)
 }
+
+const cardText = lines => lines.map(line => line.map(({ text }) => text).join(''))
 
 test('uptime counts whole years, months and days', () => {
   assert.equal(uptime(utc(2012, 8, 4), utc(2026, 11, 10)), '14 years, 3 months, 6 days')
@@ -117,10 +118,41 @@ test('yearRanges returns a single range for a same-year signup', () => {
   assert.deepEqual(ranges, [{ year: 2026, from: '2026-03-01T00:00:00.000Z', to: '2026-11-10T00:00:00.000Z' }])
 })
 
-test('sumContributions adds commits and contributions across years', () => {
-  const year = (commits, total) => ({ totalCommitContributions: commits, contributionCalendar: { totalContributions: total } })
-  assert.deepEqual(sumContributions([year(10, 20), year(5, 7)]), { commits: 15, contributions: 27 })
-  assert.deepEqual(sumContributions([]), { commits: 0, contributions: 0 })
+test('sumCommits adds commits across years', () => {
+  assert.equal(sumCommits([{ totalCommitContributions: 10 }, { totalCommitContributions: 5 }]), 15)
+  assert.equal(sumCommits([]), 0)
+})
+
+test('parseSiteNumbers reads the headline metrics from the ANSI text page', () => {
+  assert.deepEqual(parseSiteNumbers(SITE_FIXTURE), {
+    stars: '18,155',
+    xFollowers: '4,157',
+    npmDownloads: '115M',
+    requests: { 'microlink.io': '140M', 'unavatar.io': '229M' }
+  })
+})
+
+test('parseSiteNumbers fails loudly when the page format changes', () => {
+  assert.throws(() => parseSiteNumbers('Kiko Beats'), /missing the stars metric/)
+})
+
+test('the card shows site metrics next to GitHub stats', () => {
+  const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
+  assert.ok(text.some(line => /Stars: \.+ 18,155$/.test(line)))
+  assert.ok(text.some(line => /npm: \.+ 115M downloads\/mo \| X: \.+ 4,157 followers$/.test(line)))
+  assert.ok(text.some(line => /Requests\.unavatar\.io: \.+ 229M reqs\/mo$/.test(line)))
+})
+
+test('the card refuses to render without request numbers for a service', () => {
+  const site = { ...STATS.site, requests: { 'microlink.io': '140M' } }
+  assert.throws(() => buildInfoLines({ ...STATS, site }, utc(2026, 11, 10)), /no reqs\/mo for unavatar\.io/)
+})
+
+test('renderSvg centers a shorter avatar against the info column', () => {
+  const svg = renderSvg({ asciiLines: ['x'], infoLines: [blankLine(), blankLine(), blankLine()], theme: THEMES.dark })
+  const [asciiY] = svg.match(/class="ascii" x="\d+" y="(\d+)"/).slice(1)
+  const infoYs = [...svg.matchAll(/<text x="[\d.]+" y="(\d+)"/g)].map(([, y]) => y)
+  assert.equal(asciiY, infoYs[1])
 })
 
 test('toChar maps white to blank and black to the densest glyph', () => {
