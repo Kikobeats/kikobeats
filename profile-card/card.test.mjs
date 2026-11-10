@@ -148,6 +148,13 @@ test('the card has no languages or founded lines', () => {
   assert.ok(!text.includes('Work.Founded'))
 })
 
+test('the running line still fits when request counts reach billions', () => {
+  const site = { ...STATS.site, requests: { 'microlink.io': '9.9B', 'unavatar.io': '9.9B' } }
+  const line = buildInfoLines({ ...STATS, site }, utc(2026, 11, 10)).find(line => line[1]?.text === 'Work.Running: ')
+  assert.equal(lineLength(line), INFO_WIDTH)
+  assert.ok(line[2].text.length >= 2)
+})
+
 test('kernel is the job title', () => {
   const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
   assert.ok(text.some(line => /^\. Kernel: \.+ Founder @ Microlink$/.test(line)))
@@ -157,7 +164,8 @@ test('the card shows site metrics next to GitHub stats', () => {
   const text = cardText(buildInfoLines(STATS, utc(2026, 11, 10)))
   assert.ok(text.some(line => /Stars: \.+ 18,155$/.test(line)))
   assert.ok(text.some(line => /npm: \.+ 115M downloads\/mo \| X: \.+ 4,157 followers$/.test(line)))
-  assert.ok(text.some(line => /Requests\.unavatar\.io: \.+ 229M reqs\/mo$/.test(line)))
+  assert.ok(text.some(line => /^\. Work\.Running: \.+ microlink\.io \(140M reqs\/mo\), unavatar\.io \(229M reqs\/mo\)$/.test(line)))
+  assert.ok(!text.some(line => line.includes('Requests.')))
 })
 
 test('parseSiteNumbers treats X followers and requests as optional, like the site does', () => {
@@ -172,14 +180,13 @@ test('parseSiteNumbers treats X followers and requests as optional, like the sit
   assert.deepEqual(parseSiteNumbers(page), { stars: '18,185', npmDownloads: '133M', xFollowers: null, requests: {} })
 })
 
-test('the card drops X and request lines the site has no number for', () => {
+test('the card drops X followers and request counts the site has no number for', () => {
   const site = { ...STATS.site, xFollowers: null, requests: { 'microlink.io': '140M' } }
   const lines = buildInfoLines({ ...STATS, site }, utc(2026, 11, 10))
   const text = cardText(lines)
   assert.ok(text.some(line => /^\. npm: \.+ 115M downloads\/mo$/.test(line)))
   assert.ok(!text.some(line => line.includes('followers') && line.includes('X:')))
-  assert.ok(text.some(line => line.includes('Requests.microlink.io')))
-  assert.ok(!text.some(line => line.includes('Requests.unavatar.io')))
+  assert.ok(text.some(line => /^\. Work\.Running: \.+ microlink\.io \(140M reqs\/mo\), unavatar\.io$/.test(line)))
   for (const line of lines.filter(line => line.length > 1)) assert.equal(lineLength(line), INFO_WIDTH)
 })
 

@@ -1,4 +1,4 @@
-const INFO_WIDTH = 62
+const INFO_WIDTH = 76
 const COLUMN_GAP = 4
 const FONT_SIZE = 15
 const CHAR_WIDTH = FONT_SIZE * 0.62

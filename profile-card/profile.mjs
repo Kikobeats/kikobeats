@@ -8,10 +8,7 @@ export const PROFILE = {
     ['Kernel', 'Founder @ Microlink'],
     ['Shell', 'fish']
   ],
-  work: [
-    ['Work.Running', 'microlink.io, unavatar.io'],
-    ['Work.Previously', 'Vercel, IBM Research, Audiense, Rakuten']
-  ],
+  previously: 'Vercel, IBM Research, Audiense, Rakuten',
   contact: [
     ['Website', 'kikobeats.com'],
     ['Email', 'josefrancisco.verdu@gmail.com'],
@@ -21,6 +18,8 @@ export const PROFILE = {
   services: ['microlink.io', 'unavatar.io']
 }
 
+const withRequests = (host, requests) => (requests[host] ? `${host} (${requests[host]} reqs/mo)` : host)
+
 const fields = pairs => pairs.map(([key, value]) => fieldLine(key, value))
 
 export const buildInfoLines = ({ github, site }, now, profile = PROFILE) => [
@@ -28,7 +27,8 @@ export const buildInfoLines = ({ github, site }, now, profile = PROFILE) => [
   fieldLine('Uptime', uptime(profile.birthDate, now)),
   ...fields(profile.system),
   blankLine(),
-  ...fields(profile.work),
+  fieldLine('Work.Running', profile.services.map(host => withRequests(host, site.requests)).join(', ')),
+  fieldLine('Work.Previously', profile.previously),
   blankLine(),
   sectionLine('Contact'),
   ...fields(profile.contact),
@@ -38,6 +38,5 @@ export const buildInfoLines = ({ github, site }, now, profile = PROFILE) => [
   splitFieldLine(['Commits', formatNumber(github.commits)], ['Followers', formatNumber(github.followers)]),
   site.xFollowers
     ? splitFieldLine(['npm', `${site.npmDownloads} downloads/mo`], ['X', `${site.xFollowers} followers`])
-    : fieldLine('npm', `${site.npmDownloads} downloads/mo`),
-  ...fields(profile.services.filter(host => site.requests[host]).map(host => [`Requests.${host}`, `${site.requests[host]} reqs/mo`]))
+    : fieldLine('npm', `${site.npmDownloads} downloads/mo`)
 ]
